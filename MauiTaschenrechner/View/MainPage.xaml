@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiTaschenrechner.ViewModel"
+             x:Class="MauiTaschenrechner.View.MainPage"
+             Title="Maui Taschenrechner">
+    
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel />
+    </ContentPage.BindingContext>
+    
+    <Grid ColumnSpacing="10"
+          RowSpacing="10"
+          Padding="20">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <!-- Labelnumbers -->
+        <Frame Grid.Row="0"
+               Grid.ColumnSpan="4"
+               BorderColor="DarkGray">
+            <Label Text="{Binding CurrentNumber}"
+                   HorizontalTextAlignment="End"
+                   FontSize="Title" />
+        </Frame>
+        
+        <!-- Clear Button-->
+        <Button Text="Clear"
+                Command="{Binding ClearCommand}"
+                FontSize="Subtitle"
+                Grid.Column="0" 
+                Grid.Row="1"/>
+        
+        <!-- Numbers -->
+
+        <Button Text="1"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="1"
+                Grid.Row="2"
+                Grid.Column="0" />
+        
+        <Button Text="2"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="2"
+                Grid.Row="2"
+                Grid.Column="1" />
+        
+        <Button Text="3"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="3"
+                Grid.Row="2"
+                Grid.Column="2" />
+        
+        <Button Text="4"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="4"
+                Grid.Row="3"
+                Grid.Column="0" />
+        
+        <Button Text="5"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="5"
+                Grid.Row="3"
+                Grid.Column="1" />
+        
+        <Button Text="6"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="6"
+                Grid.Row="3"
+                Grid.Column="2" />
+        
+        <Button Text="7"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="7"
+                Grid.Row="4"
+                Grid.Column="0" />
+        
+        <Button Text="8"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="8"
+                Grid.Row="4"
+                Grid.Column="1" />
+        
+        <Button Text="9"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="9"
+                Grid.Row="4"
+                Grid.Column="2" />
+        
+        <Button Text="0"
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="0"
+                Grid.Row="5"
+                Grid.Column="1" />
+        
+        <Button Text="."
+                Command="{Binding AddNumberCommand}"
+                FontSize="Title"
+                CommandParameter="."
+                Grid.Row="5"
+                Grid.Column="2" />
+        
+        <!-- Vorzeichen-->
+        <Button Text="-/+"
+                Command="{Binding SignChangeCommand}"
+                FontSize="Title"
+                CommandParameter="-"
+                Grid.Row="5"
+                Grid.Column="0" />
+
+
+        <!-- Operations -->
+
+        <Button Text="+"
+                Command="{Binding SetOperatorCommand}"
+                FontSize="40"
+                CommandParameter="Plus"
+                Background="SeaGreen"
+                Grid.Row="1"
+                Grid.Column="4" />
+        
+        <Button Text="-"
+                Command="{Binding SetOperatorCommand}"
+                FontSize="40"
+                CommandParameter="Minus"
+                Background="SeaGreen"
+                Grid.Row="2"
+                Grid.Column="4" />
+        
+        <Button Text="x"
+                Command="{Binding SetOperatorCommand}"
+                FontSize="40"
+                CommandParameter="Multiply"
+                Background="SeaGreen"
+                Grid.Row="3"
+                Grid.Column="4" />
+        
+        <Button Text="/"
+                Command="{Binding SetOperatorCommand}"
+                FontSize="40"
+                CommandParameter="Devide"
+                Background="SeaGreen"
+                Grid.Row="4"
+                Grid.Column="4" />
+        
+        <Button Text="="
+                Command="{Binding CalculateResultCommand}"
+                FontSize="40"
+                CommandParameter="Plus"
+                Background="DarkGoldenrod"
+                Grid.Row="5"
+                Grid.Column="4" />
+
+    </Grid>
+</ContentPage>
