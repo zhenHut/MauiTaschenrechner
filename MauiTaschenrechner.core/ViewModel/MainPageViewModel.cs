@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MauiTaschenrechner.Enums;
 
-namespace MauiTaschenrechner.ViewModel
+namespace MauiTaschenrechner.Core.ViewModel
 {
     public partial class MainPageViewModel : ObservableObject
     {
@@ -17,6 +17,7 @@ namespace MauiTaschenrechner.ViewModel
         [ObservableProperty]
         private string _currentNumber = "0";
 
+        #pragma warning disable IDE0044
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(CalculateResultCommand))]
         private Operators _op = Operators.None;
@@ -56,8 +57,8 @@ namespace MauiTaschenrechner.ViewModel
                         (double.Parse(_firstNumber) * double.Parse(CurrentNumber)).ToString();
                     break;
 
-                case Operators.Devide:
-                    CurrentNumber =
+                case Operators.Divide:
+                    CurrentNumber = CurrentNumber.Equals("0")? "ERROR" :
                         (double.Parse(_firstNumber) / double.Parse(CurrentNumber)).ToString();
                     break;
             }

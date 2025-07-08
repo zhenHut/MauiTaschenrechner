@@ -57,12 +57,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Model\" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.6" />
+	  <ProjectReference Include="..\MauiTaschenrechner.core\MauiTaschenrechner.core.csproj" />
 	</ItemGroup>
 
 </Project>

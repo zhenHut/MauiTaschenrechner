@@ -12,6 +12,6 @@ namespace MauiTaschenrechner.Enums
         Plus,
         Minus,
         Multiply,
-        Devide
+        Divide
     }
 }
