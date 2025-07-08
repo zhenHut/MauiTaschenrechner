@@ -8,15 +8,15 @@ namespace MauiTaschenrechner.ViewModel
     {
         #region Fields
         private string _firstNumber = "";
-        private bool IsEqualOk => this.Op != Operators.None;
+        private bool IsEqualOk => Op != Operators.None;
         private const string _zeroNumber = "0";
         #endregion
 
         #region Property
-        #pragma warning disable IDE0044 // Modifizierer "readonly" hinzufügen
+        #pragma warning disable IDE0044
         [ObservableProperty]
         private string _currentNumber = "0";
-        
+
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(CalculateResultCommand))]
         private Operators _op = Operators.None;
@@ -39,60 +39,57 @@ namespace MauiTaschenrechner.ViewModel
         [RelayCommand(CanExecute = nameof(IsEqualOk))]
         private void CalculateResult()
         {
-            switch (this.Op)
+            switch (Op)
             {
                 case Operators.Plus:
-                    this.CurrentNumber =
+                    CurrentNumber =
                         (double.Parse(_firstNumber) + double.Parse(CurrentNumber)).ToString();
                     break;
 
                 case Operators.Minus:
-                    this.CurrentNumber =
+                    CurrentNumber =
                         (double.Parse(_firstNumber) - double.Parse(CurrentNumber)).ToString();
                     break;
 
                 case Operators.Multiply:
-                    this.CurrentNumber =
+                    CurrentNumber =
                         (double.Parse(_firstNumber) * double.Parse(CurrentNumber)).ToString();
                     break;
 
                 case Operators.Devide:
-                    this.CurrentNumber =
+                    CurrentNumber =
                         (double.Parse(_firstNumber) / double.Parse(CurrentNumber)).ToString();
                     break;
-
             }
             this.Op = Operators.None;
-            //CalculateResultCommand.NotifyCanExecuteChanged();
+
         }
 
         [RelayCommand]
         public void Clear()
         {
-            this.Op = Operators.None;
-            this._firstNumber = _zeroNumber;
-            this.CurrentNumber = _zeroNumber;
-            //CalculateResultCommand.NotifyCanExecuteChanged();
+            Op = Operators.None;
+            _firstNumber = _zeroNumber;
+            CurrentNumber = _zeroNumber;
         }
 
         [RelayCommand]
-        private void SetOperator(string op) 
+        private void SetOperator(string op)
         {
-            if (this.Op != Operators.None)
+            if (Op != Operators.None)
                 CalculateResult();
 
-            this.Op = Enum.Parse<Operators>(op);
+            Op = Enum.Parse<Operators>(op);
             _firstNumber = CurrentNumber;
             CurrentNumber = _zeroNumber;
-            //CalculateResultCommand.NotifyCanExecuteChanged();
         }
 
         [RelayCommand]
         private void SignChange(string op)
         {
-            if(CurrentNumber.StartsWith("-"))
+            if (CurrentNumber.StartsWith("-"))
                 CurrentNumber = CurrentNumber.Substring(1);
-            else if(CurrentNumber != _zeroNumber)
+            else if (CurrentNumber != _zeroNumber)
                 CurrentNumber = "-" + CurrentNumber;
         }
 
